@@ -6,13 +6,13 @@ exports.createProduct = async (req, res) => {
     try {
         
 
-        const {productName,productQuantity,ProductPrice} = req.body
+        const {productName,productQuantity,productPrice} = req.body
 
 
         const newData = new productModel({
             productName,
             productQuantity,
-            ProductPrice,
+            productPrice,
         
 
         })
@@ -23,7 +23,7 @@ exports.createProduct = async (req, res) => {
         res.status(200).json({message: 'product has been created successfully', data: newData})
     } catch (error) {
         console.log(error.message)
-        res.status(500).json({message:'internal server error'})
+        res.status(500).json({message:'internal server error', data:error.message})
     }
 }
 

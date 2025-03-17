@@ -18,15 +18,36 @@ app.use('/api/v1', cartRoute)
 const swaggerJsdoc = require("swagger-jsdoc");
 const swagger_UI = require("swagger-ui-express")
 
+// const options = {
+//   definition: {
+//     openapi: '3.0.0',
+//     info: {
+//       title: 'BASE_URL: https://swagger-app.onrender.com',
+//       version: '1.0.0',
+//     },
+//   },
+//   apis: ["./routes/*.js"], // files containing annotations as above
+//   components: {securitySchemes: {BearerAuth:{type: "http", scheme: "bearer", bearerFormat: "JWT"}},security: [{BearerAuth: []}]}
+// };
 const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Hello World',
+      title: 'BASE_URL: https://swagger-app.onrender.com',
       version: '1.0.0',
     },
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: "http",
+          scheme: "bearer",
+           bearerFormat: "JWT"
+        }
+      }
+    }, 
+    security: [{ BearerAuth: [] }]
   },
-  apis: ["./routes/*.js"], // files containing annotations as above
+  apis: ["./routes/*.js"] // Ensure this points to the correct path
 };
 
 const openapiSpecification = swaggerJsdoc(options);

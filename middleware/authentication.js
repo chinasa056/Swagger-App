@@ -6,7 +6,7 @@ exports.authenticate = async (req, res, next) => {
     const auth = req.headers.authorization;
     if (!auth) {
       return res.status(400).json({
-        message: "Token not found",
+        message: "Token  not found",
       });
     }
     const token = auth.split(" ")[1];
